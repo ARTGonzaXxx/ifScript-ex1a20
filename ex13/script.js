@@ -1,22 +1,60 @@
-function vai () {
+function vai() {
+    p = ""
     p = document.querySelector("p")
-    n1 = document.querySelector("#n1")
-    n2 = document.querySelector("#n2")
-    n3 = document.querySelector("#n3")
 
-    n1 = Number(n1.value)
-    n2 = Number(n2.value)
-    n3 = Number(n3.value)
+    x = 1
+    y = 0
+    c = 1
+    s = 0
+    primo = 0
 
-    if(n1 < (n2 + n3) && n2 < (n1 + n3) && n3 < (n1 + n2)) {
-        if(n1 == n2 && n2 == n3 && n3 == n1) {
-            p.innerHTML = "EQUILATERO"
-        } else if (n1 != n2 && n2 != n3 && n3 != n1) {
-            p.innerHTML = "ESCALENO"
+    do {
+        s = 1
+        primo = 0
+        do {
+            
+                if (x % s == 0) {
+                    primo++;
+                }
+                s++
+
+        } while (s > x)
+
+        if (primo == 2) {
+            p.innerHTML += `<span style="color: green;">${x}, </span>`
         } else {
-            p.innerHTML = "ISÓCELES"
+            if (x % 2 == 0) {
+                p.innerHTML += `<span style="color: blue;">${x}, </span>`
+            } else {
+                p.innerHTML += `<span style="color: red;">${x}, </span>`
+            }
         }
-    } else {
-        p.innerHTML = "NÃO É UM TRIÂNGULO SEU INCOPETENTE"
+
+        c++
+        y = x + y
+        s = 1
+        primo = 0
+        do {
+            
+                if (y % s == 0) {
+                    primo++;
+                }
+                s++
+            
+
+        } while (s > y)
+
+        if (primo == 2) {
+            p.innerHTML += `<span style="color: green;">${y}, </span>`
+        } else {
+        if (y % 2 == 0) {
+            p.innerHTML += `<span style="color: blue;">${y}, </span>`
+        } else {
+            p.innerHTML += `<span style="color: red;">${y}, </span>`
+        }
     }
+        c++
+        x = x + y
+
+    } while (c < 30)
 }
